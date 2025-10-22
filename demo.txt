@@ -1,0 +1,28 @@
+app.get("/create", async (req, res) => {
+ let createdUser=await model.create({
+    name: "Lipunnnnn",
+    userName: "lipun2121",
+    email: "lipunrout01@gmail.com",
+    mob: 778886872,
+  });
+  res.send(createdUser);
+});
+
+
+app.get("/update", async (req, res) => {
+  let updatedUser= await model.findOneAndUpdate({userName:"lipun21"},{mob:1122334455},{new:true});
+  res.send(updatedUser); 
+ });
+
+
+app.get('/read',async (req,res)=>{
+  let user= await model.find();
+  res.send(user);
+  
+})
+
+app.get('/delete',async (req,res)=>{
+  let users= await model.findOneAndDelete({userName:"lipun21"});
+  res.send(users);
+  
+})
